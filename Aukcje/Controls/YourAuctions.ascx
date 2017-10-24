@@ -63,7 +63,7 @@
             <td colspan="2">
                 <asp:LinkButton runat="server" text="Save" CommandName="Update" ></asp:LinkButton>&nbsp;
                 <asp:LinkButton runat="server" ID="CancelButton" Text="Cancel" CommandName="Cancel"></asp:LinkButton>&nbsp;
-                <asp:LinkButton runat="server" Text="Delete" ID="btnDelete" OnCommand="btnDelete_OnCommandOnClick" CommandArgument='<%#Bind("ID") %>'></asp:LinkButton>
+                <asp:LinkButton runat="server" Text="Delete" ID="btnDelete" OnCommand="BtnDelete_OnCommandOnClick" CommandArgument='<%#Bind("ID") %>'></asp:LinkButton>
             </td>
         </tr>
 
