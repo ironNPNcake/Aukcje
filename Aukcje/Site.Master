@@ -15,7 +15,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="navbar-top" runat="server">
+            <div class="navbar-top" runat="server">;
                 <div class="navigation" runat="server">
                     <div class="logo-pic">
                         <asp:ImageButton runat="server" PostBackUrl="~/Default.aspx" ID="ImageButtonLogo" AlternateText="tu bedzie logo" ImageUrl="~/Pictures/Auction.png" />
