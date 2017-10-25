@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuctionsList.aspx.cs" Inherits="Aukcje.AuctionsList" %>
 
 <%@ Register TagPrefix="uc" TagName="Categories" Src="~/Controls/LeftSideMenu.ascx" %>
+<%@ Register Src="~/Controls/CategoryTree.ascx" TagPrefix="uc" TagName="CategoryTree" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="styles/Styles.css" rel="stylesheet" type="text/css" />
@@ -30,21 +32,25 @@
                 <asp:Button runat="server" ID="FilteringButton" Text="Filter" />
             </div>
         </div>
-        
+
 
         <div class="TreeViewer">
-            <asp:TreeView runat="server" DataSourceID="SiteMapDataSource1">
-                <Nodes>
-                    <asp:TreeNode Text="Categories" Value="Categories">
-                        <asp:TreeNode Text="Electronics" Value="Electronics"></asp:TreeNode>
-                        <asp:TreeNode Text="Clothes" Value="Clothes"></asp:TreeNode>
-                        <asp:TreeNode Text="Home &amp; Garden" Value="Home &amp; Garden"></asp:TreeNode>
-                    </asp:TreeNode>
-                </Nodes>
-            </asp:TreeView>
-            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            <div class="TreeViewerContent">
+                <%--<asp:TreeView runat="server"  Font-Size="Large" Font-Bold="True">
+                    <Nodes>
+                        <asp:TreeNode Text="Categories" Value="Categories">
+                            <asp:TreeNode Text="Electronics" Value="Electronics" NavigateUrl="AuctionsList.aspx?category=0"></asp:TreeNode>
+                            <asp:TreeNode Text="Clothes" Value="Clothes" NavigateUrl="AuctionsList.aspx?category=1"></asp:TreeNode>
+                            <asp:TreeNode Text="Home &amp; Garden" Value="Home &amp; Garden" NavigateUrl="AuctionsList.aspx?category=2"></asp:TreeNode>
+                        </asp:TreeNode>
+                    </Nodes>
+                </asp:TreeView>
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />--%>
+                
+                <uc:CategoryTree runat="server" id="CategoryTree" />
+            </div>
         </div>
-        
+
 
         <div class="displayingAuctions">
             <asp:ListView ID="ListView1" runat="server" SelectMethod="Select" ItemType="Aukcje.Auction">
@@ -69,9 +75,7 @@
                             <%-- Data-bound content. --%>
                             <asp:LinkButton runat="server" ID="SingleAuctionRow" OnCommand="Auction_OnClick" CommandName="id" CommandArgument='<%#Eval("ID") %>'>
                                 <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Title") %>' />
-                            </asp:LinkButton>
-                        </td>
-                        <td>
+                            </asp:LinkButton></td><td>
                             <asp:Label runat="server" Text='<%# String.Format("{0:C}",Eval("Price")) %>' />
                         </td>
                     </tr>
@@ -86,7 +90,4 @@
             <hr />
             <hr />
             <hr />
-            <asp:Label runat="server" ID="labelka">Testowalabelka do zwracania wszystkiego</asp:Label>
-        </div>
-    </div>
-</asp:Content>
+            <asp:Label runat="server" ID="labelka">Testowalabelka do zwracania wszystkiego</asp:Label></div></div></asp:Content>

@@ -322,6 +322,12 @@ a:hover + div {
     left: 280px;
     text-align: left;
     background-color: #d0d0d0;
+    max-height:40px;
+}
+.TreeViewerContent
+{
+    position: relative;
+    
 }
 
 .AuctionImage {
