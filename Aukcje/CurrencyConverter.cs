@@ -44,7 +44,7 @@ namespace Aukcje
 
             }
 
-            return amountOfMoney;
+            return amountOfMoney/1000;
         }
         private static string checkCurrentCurrency()
         {

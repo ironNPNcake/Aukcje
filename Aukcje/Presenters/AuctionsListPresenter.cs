@@ -59,10 +59,10 @@ namespace Aukcje
                     break;
                 }
             }
-          /*  foreach (Auction auction in list)
+            foreach (Auction auction in list)
             {
                 auction.Price = CurrencyConverter.ConvertMoney(auction.Price);
-            }*/
+            }
             return list;
         }
 
