@@ -74,9 +74,10 @@
 
             <div style="position: absolute; left: 1500px; top: 30px;">
                 <asp:DropDownList runat="server" ID="ddlLanguage" AutoPostBack="True" OnSelectedIndexChanged="ddlLanguage_OnSelectedIndexChanged" >
-                    <asp:ListItem Text="<%$Resources: Resource,LanguageEN %>" Value="en"></asp:ListItem>
+                    <asp:ListItem Text="<%$Resources: Resource,LanguageEN %>" Value="en" Selected="True"></asp:ListItem>
                     <asp:ListItem Text="<%$Resources:Resource,LanguagePL %>" Value="pl" ></asp:ListItem>
                 </asp:DropDownList>
+                <asp:LinkButton PostBackUrl="?lang=pl" runat="server">sdasd</asp:LinkButton>
             </div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

@@ -12,6 +12,15 @@ namespace Aukcje
         protected override void InitializeCulture()
         {
 
+            string controlInvokeThePostBack = Request.Form["__EventTarget"];
+            if (!string.IsNullOrEmpty(controlInvokeThePostBack))
+            {
+                if (controlInvokeThePostBack.Contains("ddlLanguage"))
+                {
+                    Session["lang"] = Request.Form[controlInvokeThePostBack];
+                }
+            }
+
             if (!string.IsNullOrEmpty(Request["lang"]))
             {
 
@@ -35,8 +44,8 @@ namespace Aukcje
             }
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(culture);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
-
             base.InitializeCulture();
+
         }
     }
 }
