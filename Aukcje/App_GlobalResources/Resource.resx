@@ -153,8 +153,14 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price:</value>
+  </data>
   <data name="RememberMeText" xml:space="preserve">
     <value>Remember me next time</value>
+  </data>
+  <data name="Seller" xml:space="preserve">
+    <value>Seller: </value>
   </data>
   <data name="SellSomething" xml:space="preserve">
     <value>Sell Something</value>

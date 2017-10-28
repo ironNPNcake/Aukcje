@@ -30,6 +30,10 @@ namespace Aukcje
                 list = ctx.Auctions.ToList();
                 list = list.Where(p => p.ID == Convert.ToInt32(HttpContext.Current.Request.QueryString["ID"]));
             }
+            foreach (Auction auction in list)
+            {
+                auction.Price = CurrencyConverter.ConvertMoney(auction.Price);
+            }
             return list;
         }
     }

@@ -35,7 +35,7 @@
 
 
         <div class="TreeViewer">
-            <div class="TreeViewerContent">
+            <div class="TreeViewerContent" style="height: 40px !important;">
                 <%--<asp:TreeView runat="server"  Font-Size="Large" Font-Bold="True">
                     <Nodes>
                         <asp:TreeNode Text="Categories" Value="Categories">
@@ -46,8 +46,8 @@
                     </Nodes>
                 </asp:TreeView>
                 <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />--%>
-                
-                <uc:CategoryTree runat="server" id="CategoryTree" />
+
+                <uc:CategoryTree runat="server" ID="CategoryTree" />
             </div>
         </div>
 
@@ -57,8 +57,8 @@
                 <LayoutTemplate>
                     <table runat="server" id="table1">
                         <tr>
-                            <th colspan="2">Auction Name</th>
-                            <th>Actual Price</th>
+                            <th style="width: 800px; text-align: center;" colspan="2">Auction Name</th>
+                            <th style="width: 200px; text-align: center;">Actual Price</th>
                         </tr>
                         <tr runat="server" id="itemPlaceholder">
                         </tr>
@@ -68,26 +68,21 @@
 
                     <tr runat="server">
 
-                        <td>
+                        <td style="border-top: dashed gray 1px;">
                             <asp:ImageButton runat="server" ID="AuctionPicture" ImageUrl='<%# "PicturesHandler.ashx?ID=" + Eval("ID") %>' CssClass="AuctionImage" Height="50px" Width="50px" OnCommand="Auction_OnClick" CommandName="id" CommandArgument='<%#Eval("ID") %>' />
                         </td>
-                        <td runat="server">
+                        <td runat="server" style="border-top: dashed gray 1px;">
                             <%-- Data-bound content. --%>
                             <asp:LinkButton runat="server" ID="SingleAuctionRow" OnCommand="Auction_OnClick" CommandName="id" CommandArgument='<%#Eval("ID") %>'>
                                 <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Title") %>' />
-                            </asp:LinkButton></td><td>
+                            </asp:LinkButton></td>
+                        <td style="border-top: dashed gray 1px;">
                             <asp:Label runat="server" Text='<%# String.Format("{0:C}",Eval("Price")) %>' />
                         </td>
                     </tr>
 
                 </ItemTemplate>
             </asp:ListView>
-            <%--    <asp:GridView runat="server" ID="gridek" SelectMethod="Select" ItemType="Aukcje.Models.Auctions">
-         
-    </asp:GridView>--%>
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <asp:Label runat="server" ID="labelka">Testowalabelka do zwracania wszystkiego</asp:Label></div></div></asp:Content>
+        </div>
+    </div>
+</asp:Content>

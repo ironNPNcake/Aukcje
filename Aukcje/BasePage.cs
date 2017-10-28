@@ -18,6 +18,7 @@ namespace Aukcje
                 if (controlInvokeThePostBack.Contains("ddlLanguage"))
                 {
                     Session["lang"] = Request.Form[controlInvokeThePostBack];
+                  //  Response.Cookies.Add(new HttpCookie("lang", Request.Form[controlInvokeThePostBack]));
                 }
             }
 
@@ -28,12 +29,6 @@ namespace Aukcje
             }
             string lang = Convert.ToString(Session["lang"]);
             string culture = string.Empty;
-            /* // In case, if you want to set vietnamese as default language, then removing this comment
-            if(lang.ToLower().CompareTo("vi") == 0 ||string.IsNullOrEmpty(culture))
-            {               
-				culture = "vi-VN";
-            }
-             */
             if (lang.ToLower().CompareTo("en") == 0 || string.IsNullOrEmpty(culture))
             {
                 culture = "en";

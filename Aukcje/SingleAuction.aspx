@@ -31,14 +31,15 @@
                                 <br />
                             </li>
                             <li class="Price">
-                                <asp:Label runat="server" Font-Size="X-Large" Font-Bold="True" ForeColor="#FF5050" Text='<%# "Price: " + String.Format("{0:C}",Eval("Price")) %>' CssClass="PriceValue"></asp:Label>
+                                <asp:Label runat="server" Font-Size="X-Large" Font-Bold="True" ForeColor="#FF5050" Text='<%$Resources: Resource, Price %>' CssClass="PriceValue"></asp:Label>&nbsp;
+                                <asp:Label runat="server" Font-Size="X-Large" Font-Bold="True" ForeColor="#FF5050" Text='<%# String.Format("{0:C}",Eval("Price")) %>' CssClass="PriceValue"></asp:Label>
                             </li>
                             <li>
                                 <br />
                                 <br />
                             </li>
                             <li>
-                                <asp:Label runat="server" Text="Seller: "></asp:Label>
+                                <asp:Label runat="server" Text="<%$Resources: Resource, Seller %>"></asp:Label>
                                 <asp:LinkButton runat="server" Font-Size="Medium" ForeColor="#660033" Text='<%#Eval("seller") %>' PostBackUrl= '<%# "~/SellerPage.aspx?UID=" + Eval("seller") %>' ></asp:LinkButton>
                             </li>
                         </ul>

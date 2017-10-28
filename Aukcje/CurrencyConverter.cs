@@ -21,13 +21,18 @@ namespace Aukcje
         static public decimal ConvertMoney(decimal amount, string sourceCurrency = "USD")
         {
             decimal amountOfMoney = 999999;
+            string amountStr = Convert.ToString(amount);
+            if(amountStr.IndexOf(',')>=0)
+            {
+                amountStr = amountStr.Replace(',', '.');
+            }
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://fx.currencysystem.com/webservices/CurrencyServer4.asmx");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                string uri = $@"/webservices/CurrencyServer4.asmx/ConvertToNum?licenseKey=&fromCurrency={sourceCurrency}&toCurrency={checkCurrentCurrency()}&amount={amount}&rounding=true&date=&type=";
+                string uri = $@"/webservices/CurrencyServer4.asmx/ConvertToNum?licenseKey=&fromCurrency={sourceCurrency}&toCurrency={checkCurrentCurrency()}&amount={amountStr}&rounding=true&date=&type=";
                 HttpResponseMessage response = client.GetAsync(uri).Result;
                 if(response.IsSuccessStatusCode)
                 {
@@ -37,14 +42,14 @@ namespace Aukcje
                     int EndIndex = res.IndexOf("<",index);
                     if(index >=0)
                     {
-                        string amountStr = res.Substring(index, EndIndex - index);
+                        amountStr = res.Substring(index, EndIndex - index);
                         amountOfMoney = Convert.ToDecimal(amountStr, new CultureInfo("en-US"));
                     }
                 }
 
             }
 
-            return amountOfMoney/1000;
+            return amountOfMoney;
         }
         private static string checkCurrentCurrency()
         {

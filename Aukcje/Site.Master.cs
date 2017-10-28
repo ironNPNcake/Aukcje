@@ -13,17 +13,33 @@ namespace Aukcje
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           /* Session["lang"] = ddlLanguage.SelectedValue;
+            /* Session["lang"] = ddlLanguage.SelectedValue;
 
-            if (!this.IsPostBack)
+             if (!this.IsPostBack)
+             {
+                 if (ddlLanguage.Items.FindByValue(CultureInfo.CurrentCulture.Name) != null)
+                 {
+                     ddlLanguage.Items.FindByValue(CultureInfo.CurrentCulture.Name).Selected = true;
+                     Session["lang"] = ddlLanguage.SelectedValue;
+                 }
+             }
+             */
+
+
+            if (Session["lang"]!=null)
             {
-                if (ddlLanguage.Items.FindByValue(CultureInfo.CurrentCulture.Name) != null)
-                {
-                    ddlLanguage.Items.FindByValue(CultureInfo.CurrentCulture.Name).Selected = true;
-                    Session["lang"] = ddlLanguage.SelectedValue;
-                }
+                if (Session["lang"].ToString() == "pl")
+                    ddlLanguage.SelectedIndex = 1;
+                else if (Session["lang"].ToString() == "en")
+                    ddlLanguage.SelectedIndex = 0;
             }
-            */
+            else if(Request.Cookies["lang"]!=null)
+            {
+                if (Request.Cookies["lang"].ToString() == "pl")
+                    ddlLanguage.SelectedIndex = 1;
+                else if (Request.Cookies["lang"].ToString() == "en")
+                    ddlLanguage.SelectedIndex = 0;
+            }
         }
 
         protected void Logout_OnClick(object sender, EventArgs e)
@@ -36,7 +52,7 @@ namespace Aukcje
         protected void ddlLanguage_OnSelectedIndexChanged(object sender, EventArgs e)
         {
 
-//            Session["lang"] = ddlLanguage.SelectedValue;
+            //            Session["lang"] = ddlLanguage.SelectedValue;
             //    Page.
         }
     }

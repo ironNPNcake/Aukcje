@@ -37,6 +37,10 @@ namespace Aukcje.Controls
                        select auction;
                 list = list.ToList();
             }
+            foreach (Auction auction in list)
+            {
+                auction.Price = CurrencyConverter.ConvertMoney(auction.Price);
+            }
             return list;
         }
 
